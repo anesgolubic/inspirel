@@ -108,8 +108,18 @@ col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     art = 'Dorzol'
     st.metric(label=art,value=int(total_artikal(art)),delta=None)
-
-
+with col2:
+    art = 'Glaumax'
+    st.metric(label=art,value=int(total_artikal(art)),delta=None)
+with col3:
+    art = 'Latanox'
+    st.metric(label=art,value=int(total_artikal(art)),delta=None)
+with col4:
+    art = 'Bimanox'
+    st.metric(label=art,value=int(total_artikal(art)),delta=None)
+with col5:
+    art = 'Moksacin'
+    st.metric(label=art,value=int(total_artikal(art)),delta=None)
 
 col1, col2 = st.columns([3,1])
 with col1:
