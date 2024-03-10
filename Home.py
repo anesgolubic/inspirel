@@ -166,12 +166,13 @@ with col2:
 
 #Ostvarena prodaja po mjesecu i artiklu
 by_month_product = df1.groupby(['Year','Month','Artikal'])['Količina'].sum().reset_index()
-by_month_product["Period"] = by_month_product["Year"].astype(str) +" - " + by_month_product["Month"].astype(str)
-fig = px.bar(by_month_product, x='Period', y='Količina', color='Artikal', text_auto=True)
+by_month_product["Period"] = by_month_product["Year"].astype(str) +"/" + by_month_product["Month"].astype(str)
+#fig = px.bar(by_month_product, x='Period', y='Količina', color='Artikal', text_auto=True)
+fig = px.line(by_month_product, x='Period', y='Količina', color='Artikal')
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
-fig.update_xaxes(type='category')
+#fig.update_xaxes(type='category')
 #fig.update_xaxes(nticks=12) 
 #fig.update_traces(textposition='inside')
 st.plotly_chart(fig, use_container_width=True, config=dict(
