@@ -105,12 +105,11 @@ with col1:
     """
     #Ostvarena prodaja po mjesecu
     by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
-    fig = px.bar(by_month, x='Month', y='Količina', color='Year', barmode='group', text_auto=True)
+    fig = px.bar(by_month, x=['Year','Month'], y='Količina', color='Year', barmode='group', text_auto=True)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
     fig.update_xaxes(type='category')
-    fig.update_color(type='category')
     fig.update_xaxes(nticks=12) 
     #fig.update_traces(textposition='inside')
     st.plotly_chart(fig, use_container_width=True, config=dict(
