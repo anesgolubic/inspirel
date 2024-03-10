@@ -72,14 +72,14 @@ kanton = st.multiselect("Izaberi Kanton/Regiju", options=kantoni, default=kanton
 
 dana = (d2 - d)
 
-if poredjenje == "Prethodna godina (YoY)":
-    momd = d - relativedelta(years=1)
-    momd2 = d2 - relativedelta(years=1)
-    ppp = " YoY"
-else:
-    momd = d - timedelta(dana.days)
-    momd2 = d2 - timedelta(dana.days)
-    ppp = " MoM"
+# if poredjenje == "Prethodna godina (YoY)":
+#     momd = d - relativedelta(years=1)
+#     momd2 = d2 - relativedelta(years=1)
+#     ppp = " YoY"
+# else:
+#     momd = d - timedelta(dana.days)
+#     momd2 = d2 - timedelta(dana.days)
+#     ppp = " MoM"
 
 
 
