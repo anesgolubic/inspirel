@@ -97,7 +97,7 @@ if len(kanton) > 0:
         ddd.append(c)
     df1 = df1[df1['Regija'].isin(ddd)]
 
-st.write(df1)
+#st.write(df1)
 
 def total_artikal(artikal):
     art = df1.query('Short_title == "'+str(artikal)+'"')
