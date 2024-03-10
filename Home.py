@@ -40,7 +40,7 @@ df = df.assign(Entitet=df.apply(set_color, axis=1))
 
 df['Year'] = df['Datum'].dt.year 
 df['Month'] = df['Datum'].dt.month 
-df['Short title'] = df['Artikač'].str.split(' ').str[0]
+df['Short title'] = df['Artikač'].str.split(' ').str.[0]
 
 
 #Filteri
