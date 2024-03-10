@@ -100,11 +100,10 @@ st.write(df1)
 #Ostvarena prodaja po mjesecu
 by_month = df.groupby(['Year','Month'])['Količina'].sum().reset_index()
 
-fig = px.histogram(by_month, x='Month', y='Količina', color='Year', barmode='group', nbins=12)
+fig = px.bar(by_month, x='Month', y='Količina', color='Year', barmode='group', textposition='auto')
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
-fig.update_traces(textposition='inside')
 st.plotly_chart(fig, use_container_width=True, config=dict(
     displayModeBar=False))
 
