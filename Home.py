@@ -98,10 +98,10 @@ if len(kanton) > 0:
 
 st.write(df1)
 
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([3,1])
 with col1:
     """
-    ## Pregled prodaje po mjesecima
+    ### Pregled prodaje po mjesecima
     """
     #Ostvarena prodaja po mjesecu
     by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
@@ -115,7 +115,7 @@ with col1:
 
 with col2:
     """
-    ## Omjer prodaje po artiklu
+    ### Omjer prodaje po artiklu
     """
     #Omjer prodaje po artikli
     by_product = df1.groupby(['Short title'])['Količina'].sum().reset_index()
