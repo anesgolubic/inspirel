@@ -107,7 +107,7 @@ def total_artikal(artikal):
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     art = 'Dorzol'
-    st.metric(label=art,value=total_artikal(int(art)),delta=None)
+    st.metric(label=art,value=int(total_artikal(art)),delta=None)
 
 
 
