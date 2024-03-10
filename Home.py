@@ -45,7 +45,7 @@ df['Month'] = df['Datum'].dt.month
 
 #Filteri
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 prvi_datum = datetime(2020, 1, 1)
 
 with col1:   
@@ -59,12 +59,12 @@ with col2:
         "Izaberi krajnji datum",
         yesterday_date)
 
+#with col3:
+    #poredjenje = st.selectbox("Izaberi poređenje: ",("Prethodni period (MoM)","Prethodna godina (YoY)"),index=1)
+
+
 with col3:
-    poredjenje = st.selectbox("Izaberi poređenje: ",("Prethodni period (MoM)","Prethodna godina (YoY)"),index=1)
-
-
-with col4:
-    entitet = st.multiselect("Izaberi Entitet", options=("FBiH0,'RS','BD"), default=("FBiH0,'RS','BD"))
+    entitet = st.multiselect("Izaberi Entitet", options=('FBiH','RS','BD'), default=('FBiH','RS','BD'))
 
 kantoni = df.Regija.unique()
 kanton = st.multiselect("Izaberi Kanton/Regiju", options=kantoni, default=kantoni)
