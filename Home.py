@@ -81,6 +81,22 @@ dana = (d2 - d)
 #     momd2 = d2 - timedelta(dana.days)
 #     ppp = " MoM"
 
+df1 = df.query('Datum >= "'+str(d)+'" & Datum <= "'+str(d2)+'"')
+
+
+if len(entitet) > 0:
+    d = []
+    for c in entitet:
+        d.append(c)
+    df1 = df[df['Entitet'].isin(d)]
+
+if len(kanton) > 0:
+    d = []
+    for c in kanton:
+        d.append(c)
+    df1 = df1[df1['kanton'].isin(d)]
+
+st.write(df1)
 
 
 
