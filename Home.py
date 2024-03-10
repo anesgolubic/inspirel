@@ -94,7 +94,7 @@ if len(kanton) > 0:
     d = []
     for c in kanton:
         d.append(c)
-    df1 = df1[df1['kanton'].isin(d)]
+    df1 = df1[df1['Regija'].isin(d)]
 
 st.write(df1)
 
