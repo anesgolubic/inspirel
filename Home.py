@@ -104,7 +104,7 @@ def total_artikal(artikal):
     art = art['Količina'].sum()
     return art
 
-col1, col2, col3, col4, col5 = st.columns([5])
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     art = 'Dorzol'
     st.metric(label=art,value=total_artikal(art),delta=None)
