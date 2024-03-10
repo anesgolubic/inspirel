@@ -41,7 +41,7 @@ df = df.assign(Entitet=df.apply(set_color, axis=1))
 df['Year'] = df['Datum'].dt.year 
 df['Month'] = df['Datum'].dt.month 
 df['Short title'] = df['Artikal'].str.split(' ').str[0]
-df['Regija'] = df['Regija'].str.capitalize()
+df['Regija'] = df['Regija'].str.title()
 
 
 #Filteri
