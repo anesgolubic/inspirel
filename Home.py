@@ -22,8 +22,6 @@ import openpyxl
 
 df = pd.read_csv('Inspirel_consolidated.csv')
 
-st.write(df)
-
 df['Datum'] = df['Datum'].str.replace(" ","")
 df['Datum'] = pd.to_datetime(df['Datum'], format='mixed', dayfirst=True)
 yesterday_date = date.today() - timedelta(1)
@@ -46,7 +44,7 @@ df['Month'] = df['Datum'].dt.month
 #Filteri
 
 col1, col2, col3 = st.columns(3)
-prvi_datum = datetime(2020, 1, 1)
+prvi_datum = datetime(2022, 1, 1)
 
 with col1:   
     d = st.date_input(
@@ -98,19 +96,17 @@ if len(kanton) > 0:
 
 st.write(df1)
 
-
-
-
-
-
-
-
-
-
-
-
 #Ostvarena prodaja po mjesecu
 by_month = df.groupby(['Year','Month'])['Količina'].sum().reset_index()
+
+fig = px.bar(by_month, x='Month', y='Količina', color='Year')
+fig.update_layout(dragmode=False)
+fig.update_layout(yaxis_title=None)
+fig.update_layout(xaxis_title=None)
+st.plotly_chart(fig, use_container_width=True, config=dict(
+    displayModeBar=False))
+
+
 
 
 #Omjer prodaje po artikli
