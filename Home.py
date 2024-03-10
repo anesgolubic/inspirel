@@ -103,6 +103,7 @@ fig = px.histogram(by_month, x='Month', y='Količina', color='Year', barmode='gr
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
+fig.add_trace(go.Histogram(x=by_month['Količina'], name="count", texttemplate="%{x}", textfont_size=20))
 st.plotly_chart(fig, use_container_width=True, config=dict(
     displayModeBar=False))
 
