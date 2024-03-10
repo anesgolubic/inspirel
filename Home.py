@@ -49,7 +49,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:   
     d = st.date_input(
     "Izaberi početni datum",
-    first_date)
+    '2022-01-01')
 
     
 with col2:
