@@ -26,6 +26,7 @@ st.write(df)
 
 df['Datum'] = df['Datum'].str.replace(" ","")
 df['Datum'] = pd.to_datetime(df['Datum'], format='mixed', dayfirst=True)
+
 #Napraviti Entitet polje
 
 def set_color(row):
@@ -41,7 +42,54 @@ df = df.assign(Entitet=df.apply(set_color, axis=1))
 df['Year'] = df['Datum'].dt.year 
 df['Month'] = df['Datum'].dt.month 
 
-#Dataframovi
+#Filteri
+
+col1, col2, col3, col4 = st.columns(4)
+    
+ with col1:   
+    d = st.date_input(
+    "Izaberi početni datum",
+    first_date)
+
+    
+with col2:
+    d2 = st.date_input(
+        "Izaberi krajnji datum",
+        yesterday_date)
+
+with col3:
+    poredjenje = st.selectbox("Izaberi poređenje: ",("Prethodni period (MoM)","Prethodna godina (YoY)"),index=1)
+
+
+with col4:
+    entitet = st.multiselect("Izaberi Entitet", options=("FBiH0,'RS','BD"), default=("FBiH0,'RS','BD"))
+
+kantoni = df.Regija.unique()
+kanton = st.multiselect("Izaberi Kanton/Regiju", options=kantoni, default=kantoni)
+
+
+dana = (d2 - d)
+
+if poredjenje == "Prethodna godina (YoY)":
+    momd = d - relativedelta(years=1)
+    momd2 = d2 - relativedelta(years=1)
+    ppp = " YoY"
+else:
+    momd = d - timedelta(dana.days)
+    momd2 = d2 - timedelta(dana.days)
+    ppp = " MoM"
+
+
+
+
+
+
+
+
+
+
+
+
 
 #Ostvarena prodaja po mjesecu
 by_month = df.groupby(['Year','Month'])['Količina'].sum().reset_index()
