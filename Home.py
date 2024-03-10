@@ -166,8 +166,8 @@ with col2:
 
 #Ostvarena prodaja po mjesecu i artiklu
 by_month_product = df1.groupby(['Year','Month','Artikal'])['Količina'].sum().reset_index()
-by_month_product["period"] = by_month_product["Year"].astype(str) +" - " + by_month_product["Month"].astype(str)
-fig = px.bar(by_month_product, x=['Year','Month'], y='Količina', color='Artikal', text_auto=True)
+by_month_product["Period"] = by_month_product["Year"].astype(str) +" - " + by_month_product["Month"].astype(str)
+fig = px.bar(by_month_product, x='Period', y='Količina', color='Artikal', text_auto=True)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
