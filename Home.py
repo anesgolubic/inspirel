@@ -118,7 +118,7 @@ with col2:
     #Omjer prodaje po artikli
     by_product = df1.groupby(['Artikal'])['Količina'].sum().reset_index()
 
-    fig = px.pie(by_product, values='Količina',name='Artikal')
+    fig = px.pie(by_product, values='Količina',names='Artikal')
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
