@@ -96,7 +96,7 @@ if len(kanton) > 0:
 
 st.write(df1)
 
-col1, col2 = st.columns[1,3]
+col1, col2 = st.columns([3,1])
 with col1:
     """
     ## Pregled prodaje po mjesecima
