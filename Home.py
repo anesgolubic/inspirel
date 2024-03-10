@@ -199,4 +199,5 @@ fig.update_xaxes(type='category')
 st.plotly_chart(fig, use_container_width=True, config=dict(
     displayModeBar=False))
 
-st.write(by_region_product)
+by_region_product_pivot = by_region_product.pivot(index='Artikal', columns=['Entitet','Regija'], values='Količina')
+st.write(by_region_product_pivot)
