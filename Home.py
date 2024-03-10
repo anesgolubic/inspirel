@@ -45,8 +45,7 @@ df['Month'] = df['Datum'].dt.month
 #Filteri
 
 col1, col2, col3, col4 = st.columns(4)
-date_string = '2022-01-01'
-prvi_datum = datetime.strptime(date_string, '%Y-%m-%d')    
+prvi_datum = datetime.datetime(2020, 1, 1)
 
 with col1:   
     d = st.date_input(
