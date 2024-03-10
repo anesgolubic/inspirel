@@ -182,6 +182,8 @@ fig.update_layout(xaxis_title=None)
 st.plotly_chart(fig, use_container_width=True, config=dict(
     displayModeBar=False))
 
+by_month_product_pivot = by_month_product.pivot(index='Artikal', columns='Period', values='Količina')
+by_month_product_pivot = by_month_product_pivot.sort_values(by=['Artikal'])
 
 """
 ### Ostvarena prodaja po regionu i artiklu
