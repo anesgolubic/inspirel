@@ -26,6 +26,7 @@ st.write(df)
 
 df['Datum'] = df['Datum'].str.replace(" ","")
 df['Datum'] = pd.to_datetime(df['Datum'], format='mixed', dayfirst=True)
+yesterday_date = date.today() - timedelta(1)
 
 #Napraviti Entitet polje
 
