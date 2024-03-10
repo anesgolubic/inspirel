@@ -105,7 +105,7 @@ with col1:
     """
     #Ostvarena prodaja po mjesecu
     by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
-    fig = px.bar(by_month, x=['Year','Month'], y='Količina', barmode='group', text_auto=True)
+    fig = px.bar(by_month, x=['Year','Month'], y='Količina', color='Year', text_auto=True)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
