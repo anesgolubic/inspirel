@@ -193,7 +193,7 @@ fig = px.bar(by_region_product, x='Regija', y='Količina', color='Artikal', text
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
-#fig.update_xaxes(type='category')
+fig.update_xaxes(type='category')
 #fig.update_xaxes(nticks=12) 
 #fig.update_traces(textposition='inside')
 st.plotly_chart(fig, use_container_width=True, config=dict(
