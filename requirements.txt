@@ -4,3 +4,4 @@ streamlit
 plotly-express
 openpyxl
 psycopg2-binary
+gdown
