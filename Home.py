@@ -114,6 +114,12 @@ with col1:
     st.plotly_chart(fig, use_container_width=True, config=dict(
         displayModeBar=False))
 
+    fig = go.Figure([go.histogram(x=by_month['Month'], y=by_month['Količina'],color=by_month['Year'])])
+    fig.update_layout(dragmode=False)
+    fig.update_layout(yaxis_title=None)
+    fig.update_layout(xaxis_title=None)
+    fig.update_xaxes(nticks=12)
+
 with col2:
     """
     ### Omjer prodaje po artiklu
