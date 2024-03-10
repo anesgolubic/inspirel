@@ -168,8 +168,16 @@ with col2:
 
 
 #Ostvarena prodaja po mjesecu i artiklu
-by_month_product = df.groupby(['Year','Month','Artikal'])['Količina'].sum().reset_index()
-
+by_month_product = df1.groupby(['Year','Month','Artikal'])['Količina'].sum().reset_index()
+fig = px.line(by_month_product, x=['Year','Month'], y='Količina', color='Artikal', text_auto=True)
+    fig.update_layout(dragmode=False)
+    fig.update_layout(yaxis_title=None)
+    fig.update_layout(xaxis_title=None)
+    #fig.update_xaxes(type='category')
+    #fig.update_xaxes(nticks=12) 
+    #fig.update_traces(textposition='inside')
+    st.plotly_chart(fig, use_container_width=True, config=dict(
+        displayModeBar=False))
 
 #Ostvarena prodaja po regionu i artiklu
-by_region_product = df.groupby(['Entitet','Regija','Artikal'])['Količina'].sum().reset_index()
+by_region_product = df1.groupby(['Entitet','Regija','Artikal'])['Količina'].sum().reset_index()
