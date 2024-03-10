@@ -122,6 +122,13 @@ with col2:
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
+    fig.update_layout(legend=dict(
+        orientation="v",
+        yanchor="auto",
+        y=1,
+        xanchor="right",  # changed
+        x=-0.3
+    ))
     st.plotly_chart(fig, use_container_width=True, config=dict(
             displayModeBar=False))
 
