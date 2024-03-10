@@ -87,7 +87,7 @@ if len(entitet) > 0:
     ddd = []
     for c in entitet:
         ddd.append(c)
-    df1 = df[df['Entitet'].isin(ddd)]
+    df1 = df1[df1['Entitet'].isin(ddd)]
 
 if len(kanton) > 0:
     ddd = []
