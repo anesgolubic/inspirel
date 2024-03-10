@@ -14,11 +14,14 @@ from io import StringIO
 from dateutil.relativedelta import relativedelta
 import openpyxl
 import plotly.graph_objects as go
+import gdown
 
 """
 # Inspirel 
 """
-
+url = "https://drive.google.com/drive/folders/1DjdfdT4yF9NAWaZgw4n7oVHGe_hCKnEk"
+a = gdown.download_folder(url, quiet=True, use_cookies=False)
+st.write(a)
 
 df = pd.read_csv('Inspirel_consolidated.csv')
 
