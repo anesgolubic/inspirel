@@ -186,7 +186,7 @@ st.plotly_chart(fig, use_container_width=True, config=dict(
 """
 #Ostvarena prodaja po regionu i artiklu
 by_region_product = df1.groupby(['Entitet','Regija','Artikal'])['Količina'].sum().reset_index()
-fig = px.bar(by_region_product, x=['Entitet','Regija'], y='Količina', color='Artikal', text_auto=True)
+fig = px.bar(by_region_product, x='Regija', y='Količina', color='Artikal', text_auto=True)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
