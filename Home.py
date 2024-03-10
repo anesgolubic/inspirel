@@ -137,8 +137,8 @@ with col1:
     ### Pregled prodaje po Entitetu/Regiji
     """
     #Ostvarena prodaja po regionu
-    by_region = df.groupby(['Entitet','Regija'])['Količina'].sum().reset_index()
-    fig = px.bar(by_region, x=['Entitet','Regija'], y='Količina', color='Entitet', text_auto=True)
+    by_region = df1.groupby(['Entitet','Regija'])['Količina'].sum().reset_index()
+    fig = px.bar(by_region, x='Regija', y='Količina', color='Entitet', text_auto=True)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
@@ -153,7 +153,7 @@ with col2:
     ### Omjer prodaje po regionu
     """
     #Omjer prodaje po regionu
-    by_entity = df.groupby(['Entitet'])['Količina'].sum().reset_index()
+    by_entity = df1.groupby(['Entitet'])['Količina'].sum().reset_index()
 
     fig = px.pie(by_entity, values='Količina',names='Entitet')
     fig.update_layout(dragmode=False)
