@@ -13,6 +13,7 @@ import numpy as np
 from io import StringIO
 from dateutil.relativedelta import relativedelta
 import openpyxl
+import plotly.graph_objects as go
 
 """
 # Inspirel 
