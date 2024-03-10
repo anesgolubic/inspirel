@@ -98,7 +98,7 @@ if len(kanton) > 0:
 st.write(df1)
 
 #Ostvarena prodaja po mjesecu
-by_month = df.groupby(['Year','Month'])['Količina'].sum().reset_index()
+by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
 
 fig = px.bar(by_month, x='Month', y='Količina', color='Year', barmode='group', text_auto=True)
 fig.update_layout(dragmode=False)
@@ -112,7 +112,7 @@ st.plotly_chart(fig, use_container_width=True, config=dict(
 
 
 #Omjer prodaje po artikli
-by_product = df.groupby(['Artikal'])['Količina'].sum().reset_index()
+by_product = df1.groupby(['Artikal'])['Količina'].sum().reset_index()
 
 
 #Ostvarena prodaja po regionu
