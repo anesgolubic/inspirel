@@ -22,7 +22,6 @@ import gdown
 url = "https://drive.google.com/drive/folders/1DjdfdT4yF9NAWaZgw4n7oVHGe_hCKnEk"
 a = gdown.download_folder(url, quiet=True, use_cookies=False)
 file = a[0]
-st.write(a)
 
 
 #Global variables
@@ -50,7 +49,6 @@ def load_data(file, ignore_sheets):
     df1.dropna(subset=['Datum'], inplace=True)
 
     for sheet in sheets[1:]:
-        st.write(sheet)
         df = pd.read_excel(file, sheet_name=sheet)
         df.dropna(subset=['Artikal'], inplace=True)
         new_column_values = df['Artikal'].where(df.drop(columns='Artikal').isnull().all(axis=1))
