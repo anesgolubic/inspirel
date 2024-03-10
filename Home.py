@@ -200,4 +200,5 @@ st.plotly_chart(fig, use_container_width=True, config=dict(
     displayModeBar=False))
 
 by_region_product_pivot = by_region_product.pivot(index=['Entitet','Regija'], columns='Artikal', values='Količina')
+by_region_product_pivot = by_region_product_pivot.sort_values(by=['Regija'])
 st.write(by_region_product_pivot)
