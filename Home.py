@@ -14,55 +14,13 @@ from io import StringIO
 from dateutil.relativedelta import relativedelta
 import openpyxl
 import plotly.graph_objects as go
-import gdown
 
 """
 # Inspirel 
 """
-url = "https://drive.google.com/drive/folders/1DjdfdT4yF9NAWaZgw4n7oVHGe_hCKnEk"
-a = gdown.download_folder(url, quiet=True, use_cookies=False)
-file = a[0]
 
 
-#Global variables
-ignore_sheets = ['Bonus 2023','Izgubljena prodaja Dorzol','Cumulative Dorzol','Bonus 2022','Weekly sales','Cumulative']
-
-@st.cache
-def load_data(file, ignore_sheets):
-
-    sheets = []
-    workbook = openpyxl.load_workbook(file)
-    sheet_names = workbook.sheetnames
-
-    for sheet_name in sheet_names:
-        if sheet_name in ignore_sheets:
-            pass
-        else:
-            sheets.append(sheet_name)
-    
-    sheet = sheets[0]
-    df1 = pd.read_excel(file, sheet_name=sheet)
-    df1.dropna(subset=['Artikal'], inplace=True)
-    new_column_values = df1['Artikal'].where(df1.drop(columns='Artikal').isnull().all(axis=1))
-    new_column_values.ffill(inplace=True)
-    df1['Regija'] = new_column_values
-    df1.dropna(subset=['Datum'], inplace=True)
-
-    for sheet in sheets[1:]:
-        df = pd.read_excel(file, sheet_name=sheet)
-        df.dropna(subset=['Artikal'], inplace=True)
-        new_column_values = df['Artikal'].where(df.drop(columns='Artikal').isnull().all(axis=1))
-        new_column_values.ffill(inplace=True)
-        df['Regija'] = new_column_values
-        df.dropna(subset=['Datum'], inplace=True)
-        df1 = pd.concat([df, df1], axis=0)
-
-    return df1
-
-df = load_data(file, ignore_sheets)
-
-
-#df = pd.read_csv('Inspirel_consolidated.csv')
+df = pd.read_csv('Inspirel_consolidated.csv')
 
 df['Datum'] = df['Datum'].str.replace(" ","")
 df['Datum'] = pd.to_datetime(df['Datum'], format='mixed', dayfirst=True)
