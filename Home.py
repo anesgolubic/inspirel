@@ -84,16 +84,16 @@ df1 = df.query('Datum >= "'+str(d)+'" & Datum <= "'+str(d2)+'"')
 
 
 if len(entitet) > 0:
-    d = []
+    ddd = []
     for c in entitet:
-        d.append(c)
-    df1 = df[df['Entitet'].isin(d)]
+        ddd.append(c)
+    df1 = df[df['Entitet'].isin(ddd)]
 
 if len(kanton) > 0:
-    d = []
+    ddd = []
     for c in kanton:
-        d.append(c)
-    df1 = df1[df1['Regija'].isin(d)]
+        ddd.append(c)
+    df1 = df1[df1['Regija'].isin(ddd)]
 
 st.write(df1)
 
