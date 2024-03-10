@@ -40,6 +40,8 @@ df = df.assign(Entitet=df.apply(set_color, axis=1))
 
 df['Year'] = df['Datum'].dt.year 
 df['Month'] = df['Datum'].dt.month 
+df['Short title'] = df['Artikač'].str.split(' ').str[0]
+
 
 #Filteri
 
@@ -116,9 +118,9 @@ with col2:
     ## Omjer prodaje po artiklu
     """
     #Omjer prodaje po artikli
-    by_product = df1.groupby(['Artikal'])['Količina'].sum().reset_index()
+    by_product = df1.groupby(['Short title'])['Količina'].sum().reset_index()
 
-    fig = px.pie(by_product, values='Količina',names='Artikal')
+    fig = px.pie(by_product, values='Količina',names='Short title')
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
