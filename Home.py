@@ -17,7 +17,6 @@ import plotly.graph_objects as go
 
 """
 # Inspirel 
-## Pregled prodaje po mjesecima
 """
 
 
@@ -97,22 +96,38 @@ if len(kanton) > 0:
 
 st.write(df1)
 
-#Ostvarena prodaja po mjesecu
-by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
+col1, col2 = st.columns[1,3]
+with col1:
+    """
+    ## Pregled prodaje po mjesecima
+    """
+    #Ostvarena prodaja po mjesecu
+    by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
+    fig = px.bar(by_month, x='Month', y='Količina', color='Year', barmode='group', text_auto=True)
+    fig.update_layout(dragmode=False)
+    fig.update_layout(yaxis_title=None)
+    fig.update_layout(xaxis_title=None)
+    #fig.update_traces(textposition='inside')
+    st.plotly_chart(fig, use_container_width=True, config=dict(
+        displayModeBar=False))
 
-fig = px.bar(by_month, x='Month', y='Količina', color='Year', barmode='group', text_auto=True)
-fig.update_layout(dragmode=False)
-fig.update_layout(yaxis_title=None)
-fig.update_layout(xaxis_title=None)
-#fig.update_traces(textposition='inside')
-st.plotly_chart(fig, use_container_width=True, config=dict(
-    displayModeBar=False))
+with col2:
+    """
+    ## Omjer prodaje po artiklu
+    """
+    #Omjer prodaje po artikli
+    by_product = df1.groupby(['Artikal'])['Količina'].sum().reset_index()
+
+    fig = px.pie(by_product, values='Količina',name='Artikal')
+    fig.update_layout(dragmode=False)
+    fig.update_layout(yaxis_title=None)
+    fig.update_layout(xaxis_title=None)
+    st.plotly_chart(fig, use_container_width=True, config=dict(
+            displayModeBar=False))
 
 
 
 
-#Omjer prodaje po artikli
-by_product = df1.groupby(['Artikal'])['Količina'].sum().reset_index()
 
 
 #Ostvarena prodaja po regionu
