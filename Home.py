@@ -45,11 +45,13 @@ df['Month'] = df['Datum'].dt.month
 #Filteri
 
 col1, col2, col3, col4 = st.columns(4)
-    
+date_string = '2022-01-01'
+prvi_datum = datetime.strptime(date_string, '%Y-%m-%d')    
+
 with col1:   
     d = st.date_input(
     "Izaberi početni datum",
-    '2022-01-01')
+    prvi_datum)
 
     
 with col2:
