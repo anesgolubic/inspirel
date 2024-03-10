@@ -169,7 +169,8 @@ with col2:
 
 #Ostvarena prodaja po mjesecu i artiklu
 by_month_product = df1.groupby(['Year','Month','Artikal'])['Količina'].sum().reset_index()
-fig = px.line(by_month_product, x=['Year','Month'], y='Količina', color='Artikal')
+by_month_product['Year-Month'] = by_month_product['Year'] + " - " + by_month_product['Month'] 
+fig = px.line(by_month_product, x='Year-Month', y='Količina', color='Artikal')
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
