@@ -40,7 +40,7 @@ df = df.assign(Entitet=df.apply(set_color, axis=1))
 
 df['Year'] = df['Datum'].dt.year 
 df['Month'] = df['Datum'].dt.month 
-df['Short title'] = df['Artikal'].str.split(' ').str[0]
+df['Short_title'] = df['Artikal'].str.split(' ').str[0]
 df['Regija'] = df['Regija'].str.title()
 
 
@@ -99,6 +99,18 @@ if len(kanton) > 0:
 
 st.write(df1)
 
+def total_artikal(artikal):
+    art = df1.query('Short_title == "'+str(artikal)+'"')
+    art = art['Količina'].sum()
+    return art
+
+col1, col2, col3, col4, col5 = st.columns([5])
+with col1:
+    art = 'Dorzol'
+    st.metric(label=art,value=total_artikal(art),delta=None)
+
+
+
 col1, col2 = st.columns([3,1])
 with col1:
     """
@@ -122,9 +134,9 @@ with col2:
     ### Omjer prodaje po artiklu
     """
     #Omjer prodaje po artikli
-    by_product = df1.groupby(['Short title'])['Količina'].sum().reset_index()
+    by_product = df1.groupby(['Short_title'])['Količina'].sum().reset_index()
 
-    fig = px.pie(by_product, values='Količina',names='Short title')
+    fig = px.pie(by_product, values='Količina',names='Short_title')
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
