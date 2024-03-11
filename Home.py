@@ -1,6 +1,6 @@
 import streamlit as st
 st.set_page_config(
-    page_title="Inspirel",
+    page_title="Inspirehl",
     #page_icon="🧊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -16,7 +16,7 @@ import openpyxl
 import plotly.graph_objects as go
 
 """
-# Inspirel 
+# Inspirehl
 """
 
 
