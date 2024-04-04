@@ -256,7 +256,7 @@ by_month_product_pivot = by_month_product_pivot.sort_values(by=['Short_title'])
 #Ostvarena prodaja po regionu i artiklu
 by_region_product = df1.groupby(['Entitet','Regija','Short_title'])['Količina'].sum().reset_index()
 by_region_product = by_region_product.sort_values(by=['Regija'])
-fig = px.bar(by_region_product, x='Regija', y='Količina', color='Short_title', text_auto=True)
+fig = px.bar(by_region_product, x='Regija', y='Količina', color='Short_title', text_auto=True, color_discrete_map=color_map_artikli)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
