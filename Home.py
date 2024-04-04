@@ -340,3 +340,20 @@ for col, value in assign_columns(values):
 
 koldf = pd.DataFrame(kolone, columns=['Kolona','Ime'])
 st.write(koldf)
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    iterdata = koldf[koldf['Kolona']=='col1']
+    for index, row in iterdata.iterrows():
+        zadnji_graph(by_region_product,row['Ime'])
+
+with col2:
+    iterdata = koldf[koldf['Kolona']=='col2']
+    for index, row in iterdata.iterrows():
+        zadnji_graph(by_region_product,row['Ime'])
+
+with col3:
+    iterdata = koldf[koldf['Kolona']=='col3']
+    for index, row in iterdata.iterrows():
+        zadnji_graph(by_region_product,row['Ime'])
