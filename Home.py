@@ -113,6 +113,12 @@ if len(artikli) > 0:
         dddd.append(c)
     df1 = df1[df1['Short_title'].isin(dddd)]
 
+if len(poslovni_partner) > 0:
+    ddddd = []
+    for c in poslovni_partner:
+        ddddd.append(c)
+    df1 = df1[df1['Poslovni partner'].isin(ddddd)]
+
 st.write(df1)
 
 def total_artikal(artikal):
