@@ -301,9 +301,7 @@ def zadnji_graph(by_region_product, x):
             displayModeBar=False))
 
 if len(artikala) == 1:
-    col1 = st.columns(1)
-    with col1:
-        zadnji_graph(by_region_product,artikala[0])
+    zadnji_graph(by_region_product,artikala[0])
         
 elif len(artikala) == 2:
     col1, col2 = st.columns(2)
