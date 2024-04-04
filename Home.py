@@ -76,11 +76,11 @@ with st.sidebar:
     #poredjenje = st.selectbox("Izaberi poređenje: ",("Prethodni period (MoM)","Prethodna godina (YoY)"),index=1)
 
 color_map_artikli={
-    "Dorzol": "red",
-    "Glaumax": "green",
-    "Latanox": "blue",
-    "Bimanox": "goldenrod",
-    "Moksacin": "magenta"}
+    "Dorzol": "#636EFA",
+    "Glaumax": "#EF553B",
+    "Latanox": "#00CC96",
+    "Bimanox": "#AB63FA",
+    "Moksacin": "#FFA15A"}
     
 
 d = selected_date[0]
