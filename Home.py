@@ -333,7 +333,6 @@ else:
         kolone.append([col,value])
 
     koldf = pd.DataFrame(kolone, columns=['Kolona','Ime'])
-    st.write(koldf)
 
     col1, col2, col3 = st.columns(3)
 
