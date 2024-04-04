@@ -256,7 +256,7 @@ by_month_product_pivot = by_month_product_pivot.sort_values(by=['Short_title'])
 #Ostvarena prodaja po regionu i artiklu
 by_region_product = df1.groupby(['Entitet','Regija','Short_title'])['Količina'].sum().reset_index()
 by_region_product = by_region_product.sort_values(by=['Regija'])
-by_region_product2 = by_region_product.pivot(index=[],columns='Short_title',values='Količina').fillna(0).reset_index()
+by_region_product2 = by_region_product.pivot(index=['Entitet','Regija'],columns='Short_title',values='Količina').fillna(0).reset_index()
 by_region_product = pd.melt(by_region_product2,
     id_vars=['Entitet','Regija'],
     value_vars=None,
