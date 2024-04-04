@@ -280,3 +280,41 @@ st.plotly_chart(fig, use_container_width=True, config=dict(
 by_region_product_pivot = by_region_product.pivot(index=['Entitet','Regija'], columns='Short_title', values='Količina')
 by_region_product_pivot = by_region_product_pivot.sort_values(by=['Regija'])
 st.write(by_region_product_pivot)
+
+"""
+### Ostvarena kumulativna prodaja po regionu i artiklu - drugi prikaz
+"""
+
+by_region_product = df1.groupby(['Entitet','Regija','Short_title'])['Količina'].sum().reset_index()
+artikala = by_region_product['Short_titile'].uniqeu()
+
+def zadnji_graph(x):
+        by_region_product = by_region_product.query("Short_title == '"+str(x)+"'")
+        fig = px.bar(by_region_product, x='Regija', y='Količina', color='Short_title', text_auto=True, color_discrete_map=color_map_artikli)
+        fig.update_layout(dragmode=False)
+        fig.update_layout(yaxis_title=None)
+        fig.update_layout(xaxis_title=None)
+        fig.update_xaxes(type='category')
+        #fig.update_xaxes(nticks=12) 
+        #fig.update_traces(textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, config=dict(
+            displayModeBar=False))
+
+if len(artikala) == 1:
+    col1 = st.columns(1)
+    with col1:
+        zadnji_graph(artikala[0])
+        
+elif len(artikala) == 2:
+    col1, col2 = st.columns(2)
+    with col1:
+        zadnji_graph(artikala[0])
+        
+    with col2:
+        zadnji_graph(artikala[1])
+        
+else:
+    col1, col2, col3 = st.columns(3)
+    for x in artikala:
+        with col1:
+            zadnji_graph(x)
