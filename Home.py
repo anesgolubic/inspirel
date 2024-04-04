@@ -314,16 +314,16 @@ elif len(artikala) == 2:
         
 else:
     def assign_columns(values):
-    # Initialize dictionaries to count occurrences of each column value
-    col_counts = {'col1': 0, 'col2': 0, 'col3': 0}
+        # Initialize dictionaries to count occurrences of each column value
+        col_counts = {'col1': 0, 'col2': 0, 'col3': 0}
 
-    # Iterate over the list of values
-    for value in values:
-        # Find the column with the fewest occurrences
-        min_col = min(col_counts, key=col_counts.get)
-        # Assign the value to that column
-        col_counts[min_col] += 1
-        yield min_col, value
+        # Iterate over the list of values
+        for value in values:
+            # Find the column with the fewest occurrences
+            min_col = min(col_counts, key=col_counts.get)
+            # Assign the value to that column
+            col_counts[min_col] += 1
+            yield min_col, value
 
     values = artikala
 
