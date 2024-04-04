@@ -281,5 +281,5 @@ by_region_product_pivot = by_region_product_pivot.sort_values(by=['Regija'])
 st.write(by_region_product_pivot)
 
 by_region_product_pivot2 = by_region_product.pivot(index='Short_title', columns=['Entitet','Regija'], values='Količina')
-by_region_product_pivot2 = by_region_product_pivot.sort_values(by=['Short_title'])
+#by_region_product_pivot2 = by_region_product_pivot.sort_values(by=['Short_title'])
 st.write(by_region_product_pivot)
