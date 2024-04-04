@@ -157,6 +157,7 @@ with col1:
     fig.update_layout(xaxis_title=None)
     fig.update_xaxes(type='category')
     fig.update_xaxes(nticks=12) 
+    fig.update_layout(showlegend=False)
     #fig.update_traces(textposition='inside')
     st.plotly_chart(fig, use_container_width=True, config=dict(
         displayModeBar=False))
