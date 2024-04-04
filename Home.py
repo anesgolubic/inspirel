@@ -74,7 +74,8 @@ with st.sidebar:
 
     
 
-
+d = selected_date[0]
+d2 = selected_date[1]
 st.write(selected_date)
 dana = (d2 - d)
 
