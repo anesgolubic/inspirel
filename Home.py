@@ -212,7 +212,7 @@ with col2:
     #Omjer prodaje po regionu
     by_entity = df1.groupby(['Entitet'])['Količina'].sum().reset_index()
 
-    fig = px.pie(by_entity, values='Količina',names='Entitet', color='Entiet', color_discrete_map=color_map_entiteti)
+    fig = px.pie(by_entity, values='Količina',names='Entitet', color='Entitet', color_discrete_map=color_map_entiteti)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
