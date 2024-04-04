@@ -50,12 +50,14 @@ df['Regija'] = df['Regija'].str.title()
 col1, col2 = st.columns([2,1])
 prvi_datum = datetime(2022, 1, 1)
 yesterday_date = date.today() - timedelta(1)
+st.write(prvi_datum)
+st.write(yesterday_date)
 selected_date = st.slider(
     "Izaberi period",
     min_value=prvi_datum,
     max_value=yesterday_date,
     value=(prvi_datum, yesterday_date),
-    step=timedelta(days=1)
+    step=timedelta(days=1),
 )
 
 with col1:   
