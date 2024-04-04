@@ -113,7 +113,7 @@ if len(artikli) > 0:
         dddd.append(c)
     df1 = df1[df1['Short_title'].isin(dddd)]
 
-if len(poslovni_partner) > 0:
+if poslovni_partner:
     ddddd = []
     for c in poslovni_partner:
         ddddd.append(c)
