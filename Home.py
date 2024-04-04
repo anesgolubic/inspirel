@@ -313,13 +313,7 @@ elif len(artikala) == 2:
         zadnji_graph(by_region_product,artikala[1])
         
 else:
-    col1, col2, col3 = st.columns(3)
-    for x in artikala:
-        with col1:
-            zadnji_graph(by_region_product,x)
-
-
-def assign_columns(values):
+    def assign_columns(values):
     # Initialize dictionaries to count occurrences of each column value
     col_counts = {'col1': 0, 'col2': 0, 'col3': 0}
 
@@ -331,30 +325,31 @@ def assign_columns(values):
         col_counts[min_col] += 1
         yield min_col, value
 
-values = artikala
+    values = artikala
+
+    kolone = []
+    # Assign columns to values
+    for col, value in assign_columns(values):
+        kolone.append([col,value])
+
+    koldf = pd.DataFrame(kolone, columns=['Kolona','Ime'])
+    st.write(koldf)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        iterdata = koldf[koldf['Kolona']=='col1']
+        for index, row in iterdata.iterrows():
+            zadnji_graph(by_region_product,row['Ime'])
+
+    with col2:
+        iterdata = koldf[koldf['Kolona']=='col2']
+        for index, row in iterdata.iterrows():
+            zadnji_graph(by_region_product,row['Ime'])
+
+    with col3:
+        iterdata = koldf[koldf['Kolona']=='col3']
+        for index, row in iterdata.iterrows():
+            zadnji_graph(by_region_product,row['Ime'])
 
 
-kolone = []
-# Assign columns to values
-for col, value in assign_columns(values):
-    kolone.append([col,value])
-
-koldf = pd.DataFrame(kolone, columns=['Kolona','Ime'])
-st.write(koldf)
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    iterdata = koldf[koldf['Kolona']=='col1']
-    for index, row in iterdata.iterrows():
-        zadnji_graph(by_region_product,row['Ime'])
-
-with col2:
-    iterdata = koldf[koldf['Kolona']=='col2']
-    for index, row in iterdata.iterrows():
-        zadnji_graph(by_region_product,row['Ime'])
-
-with col3:
-    iterdata = koldf[koldf['Kolona']=='col3']
-    for index, row in iterdata.iterrows():
-        zadnji_graph(by_region_product,row['Ime'])
