@@ -332,6 +332,10 @@ def assign_columns(values):
 
 values = artikala
 
+
+kolone = []
 # Assign columns to values
 for col, value in assign_columns(values):
-    st.write(f"{value} assigned to {col}")
+    kolone.append([col,value])
+
+st.write(kolone)
