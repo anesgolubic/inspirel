@@ -238,7 +238,7 @@ by_month_product = pd.melt(by_month_product2,
     col_level=None,
     ignore_index=True)
 st.write(by_month_product)
-fig = px.line(by_month_product2, x='Period', y=['Dorzol','Glaumax'], color='Short_title', color_discrete_map=color_map_artikli)
+fig = px.line(by_month_product, x='Period', y='Količina', color='Short_title', color_discrete_map=color_map_artikli)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
