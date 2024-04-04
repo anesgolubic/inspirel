@@ -237,10 +237,11 @@ by_month_product = pd.melt(by_month_product2,
     value_name='Količina',
     col_level=None,
     ignore_index=True)
-fig = px.line(by_month_product, x='Period', y='Količina', color='Short_title', color_discrete_map=color_map_artikli)
+fig = px.line(by_month_product, x='Period', y='Količina', color='Short_title', color_discrete_map=color_map_artikli, markers=True)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
+fig.update_traces(mode='markers+lines')
 #fig.update_xaxes(type='category')
 #fig.update_xaxes(nticks=12) 
 #fig.update_traces(textposition='inside')
