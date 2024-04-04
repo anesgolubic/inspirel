@@ -24,7 +24,7 @@ df = pd.read_csv('Inspirel_consolidated.csv')
 
 df['Datum'] = df['Datum'].str.replace(" ","")
 df['Datum'] = pd.to_datetime(df['Datum'], format='mixed', dayfirst=True)
-yesterday_date = date.today() - timedelta(1)
+
 
 #Napraviti Entitet polje
 
@@ -46,8 +46,17 @@ df['Regija'] = df['Regija'].str.title()
 
 #Filteri
 
-col1, col2, col3 = st.columns(3)
+#col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns([2,1])
 prvi_datum = datetime(2022, 1, 1)
+yesterday_date = date.today() - timedelta(1)
+selected_date = st.slider(
+    "Izaberi period",
+    min_value=prvi_datum,
+    max_value=yesterday_date,
+    value=(prvi_datum, yesterday_date),
+    step=timedelta(days=1)
+)
 
 with col1:   
     d = st.date_input(
