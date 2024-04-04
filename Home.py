@@ -103,6 +103,13 @@ if len(kanton) > 0:
         ddd.append(c)
     df1 = df1[df1['Regija'].isin(ddd)]
 
+
+if len(artikli) > 0:
+    dddd = []
+    for c in artikli:
+        dddd.append(c)
+    df1 = df1[df1['Short_title'].isin(dddd)]
+
 #st.write(df1)
 
 def total_artikal(artikal):
