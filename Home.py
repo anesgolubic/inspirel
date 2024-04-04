@@ -126,7 +126,7 @@ if len(artikli) > 0:
 if poslovni_partner:
     df1 = df1[df1['Poslovni partner'] == str(poslovni_partner)]
 
-st.write(df1)
+#st.write(df1)
 
 df1 = df1.drop_duplicates()
 
