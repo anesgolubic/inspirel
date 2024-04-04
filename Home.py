@@ -75,8 +75,7 @@ with st.sidebar:
     
 
 
-
-
+st.write(selected_date)
 dana = (d2 - d)
 
 # if poredjenje == "Prethodna godina (YoY)":
