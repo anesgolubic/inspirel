@@ -241,7 +241,7 @@ fig = px.line(by_month_product, x='Period', y='Količina', color='Short_title', 
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
 fig.update_layout(xaxis_title=None)
-fig.update_traces(mode='markers+lines',line=dict(width=2))
+fig.update_traces(mode='markers+lines',line=dict(width=5))
 #fig.update_xaxes(type='category')
 #fig.update_xaxes(nticks=12)
 #fig.update_traces(textposition='inside')
