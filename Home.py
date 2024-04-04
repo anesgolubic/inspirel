@@ -118,6 +118,8 @@ if poslovni_partner:
 
 st.write(df1)
 
+df1 = df1.drop_duplicates()
+
 def total_artikal(artikal):
     art = df1.query('Short_title == "'+str(artikal)+'"')
     art = art['Količina'].sum()
