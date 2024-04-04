@@ -229,6 +229,7 @@ by_month_product["Period"] = by_month_product["Year"].astype(str) +"/" + by_mont
 by_month_product = by_month_product.sort_values(by=['Year','Month','Short_title'], ascending=True).reset_index(drop=True)
 #by_month_product = by_month_product[['Period','Short_title','Količina']]
 #fig = px.bar(by_month_product, x='Period', y='Količina', color='Artikal', text_auto=True)
+st.write(by_month_product)
 fig = px.line(by_month_product, x='Period', y='Količina', color='Short_title', color_discrete_map=color_map_artikli)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
