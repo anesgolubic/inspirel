@@ -253,7 +253,7 @@ by_month_product_pivot = by_month_product_pivot.sort_values(by=['Short_title'])
 st.write(by_month_product_pivot)
 
 """
-### Ostvarena prodaja po regionu i artiklu
+### Ostvarena kumulativna prodaja po regionu i artiklu
 """
 #Ostvarena prodaja po regionu i artiklu
 by_region_product = df1.groupby(['Entitet','Regija','Short_title'])['Količina'].sum().reset_index()
