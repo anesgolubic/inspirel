@@ -53,34 +53,28 @@ prvi_datum = datetime(2022, 1, 1).date()
 yesterday_date = date.today() - timedelta(1)
 st.write(prvi_datum)
 st.write(yesterday_date)
-selected_date = st.slider(
-    "Izaberi period",
-    min_value=prvi_datum,
-    max_value=yesterday_date,
-    value=(prvi_datum, yesterday_date),
-    step=timedelta(days=1),
-)
 
-with col1:   
-    d = st.date_input(
-    "Izaberi početni datum",
-    prvi_datum)
-
+with st.sidebar:
+    selected_date = st.slider(
+        "Izaberi period",
+        min_value=prvi_datum,
+        max_value=yesterday_date,
+        value=(prvi_datum, yesterday_date),
+        step=timedelta(days=1),
+    )
     
-with col2:
-    d2 = st.date_input(
-        "Izaberi krajnji datum",
-        yesterday_date)
+    entitet = st.multiselect("Izaberi Entitet", options=('FBiH','RS','BD'), default=('FBiH','RS','BD'))
+    
+    kantoni = df.Regija.unique()
+    kanton = st.multiselect("Izaberi Kanton/Regiju", options=kantoni, default=kantoni)
 
 #with col3:
     #poredjenje = st.selectbox("Izaberi poređenje: ",("Prethodni period (MoM)","Prethodna godina (YoY)"),index=1)
 
 
-with col3:
-    entitet = st.multiselect("Izaberi Entitet", options=('FBiH','RS','BD'), default=('FBiH','RS','BD'))
+    
 
-kantoni = df.Regija.unique()
-kanton = st.multiselect("Izaberi Kanton/Regiju", options=kantoni, default=kantoni)
+
 
 
 dana = (d2 - d)
