@@ -81,6 +81,11 @@ color_map_artikli={
     "Latanox": "#00CC96",
     "Bimanox": "#AB63FA",
     "Moksacin": "#FFA15A"}
+
+color_map_entiteti={
+    "FBiH": "#636EFA",
+    "RS": "#EF553B",
+    "BD": "#00CC96"}
     
 
 d = selected_date[0]
@@ -190,7 +195,7 @@ with col1:
     #Ostvarena prodaja po regionu
     by_region = df1.groupby(['Entitet','Regija'])['Količina'].sum().reset_index()
     by_region = by_region.sort_values(by=['Regija'])
-    fig = px.bar(by_region, x='Regija', y='Količina', color='Entitet', text_auto=True)
+    fig = px.bar(by_region, x='Regija', y='Količina', color='Entitet', text_auto=True, color_discrete_map=color_map_entiteti)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
@@ -207,7 +212,7 @@ with col2:
     #Omjer prodaje po regionu
     by_entity = df1.groupby(['Entitet'])['Količina'].sum().reset_index()
 
-    fig = px.pie(by_entity, values='Količina',names='Entitet')
+    fig = px.pie(by_entity, values='Količina',names='Entitet', color='Entiet', color_discrete_map=color_map_entiteti)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
     fig.update_layout(xaxis_title=None)
