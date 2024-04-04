@@ -114,7 +114,7 @@ if len(artikli) > 0:
     df1 = df1[df1['Short_title'].isin(dddd)]
 
 if poslovni_partner:
-    df1 = df1.query('Poslovni partner == "'+str(poslovni_partner)+'"')
+    df1 = df1[df1['Poslovni partner'] == str(poslovni_partner)]
 
 st.write(df1)
 
