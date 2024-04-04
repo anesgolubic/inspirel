@@ -127,6 +127,9 @@ def total_artikal(artikal):
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     art = 'Dorzol'
+    a = total_artikal(art)
+    st.write(a)
+    st.write(f"{a:,}")
     st.metric(label=art,value=int(f"{total_artikal(art):,}"),delta=None)
 with col2:
     art = 'Glaumax'
