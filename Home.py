@@ -130,7 +130,7 @@ with col1:
     a = total_artikal(art)
     st.write(a)
     st.write(f"{a:,}")
-    st.metric(label=art,value=f"{total_artikal(art):,}",delta=None)
+    st.metric(label=art,value=f"{total_artikal(art):.}",delta=None)
 with col2:
     art = 'Glaumax'
     st.metric(label=art,value=int(total_artikal(art)),delta=None)
