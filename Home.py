@@ -237,7 +237,6 @@ by_month_product = pd.melt(by_month_product2,
     value_name='Količina',
     col_level=None,
     ignore_index=True)
-st.write(by_month_product)
 fig = px.line(by_month_product, x='Period', y='Količina', color='Short_title', color_discrete_map=color_map_artikli)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
@@ -248,8 +247,8 @@ fig.update_layout(xaxis_title=None)
 st.plotly_chart(fig, use_container_width=True, config=dict(
     displayModeBar=False))
 
-by_month_product_pivot = by_month_product.pivot(index='Artikal', columns='Period', values='Količina')
-by_month_product_pivot = by_month_product_pivot.sort_values(by=['Artikal'])
+by_month_product_pivot = by_month_product.pivot(index='Short_title', columns='Period', values='Količina')
+by_month_product_pivot = by_month_product_pivot.sort_values(by=['Short_title'])
 
 """
 ### Ostvarena prodaja po regionu i artiklu
