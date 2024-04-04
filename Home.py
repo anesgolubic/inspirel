@@ -48,7 +48,7 @@ df['Regija'] = df['Regija'].str.title()
 
 #col1, col2, col3 = st.columns(3)
 col1, col2 = st.columns([2,1])
-prvi_datum = datetime(2022, 1, 1).date
+prvi_datum = datetime.date(2022, 1, 1)
 yesterday_date = date.today() - timedelta(1)
 st.write(prvi_datum)
 st.write(yesterday_date)
