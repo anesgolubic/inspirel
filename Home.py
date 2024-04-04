@@ -229,9 +229,9 @@ by_month_product["Period"] = by_month_product["Year"].astype(str) +"/" + by_mont
 by_month_product = by_month_product.sort_values(by=['Year','Month','Short_title'], ascending=True).reset_index(drop=True)
 #by_month_product = by_month_product[['Period','Short_title','Količina']]
 #fig = px.bar(by_month_product, x='Period', y='Količina', color='Artikal', text_auto=True)
-by_month_product2 = by_month_product.pivot(index='Period',columns='Short_title',values='Količina').fillna(0).reset_index()
+by_month_product2 = by_month_product.pivot(index=['Year','Month','Period'],columns='Short_title',values='Količina').fillna(0).reset_index()
 by_month_product = pd.melt(by_month_product2,
-    id_vars='Period',
+    id_vars=['Year','Month','Period'],
     value_vars=None,
     var_name=None,
     value_name='Količina',
