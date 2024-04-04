@@ -286,7 +286,7 @@ st.write(by_region_product_pivot)
 """
 
 by_region_product = df1.groupby(['Entitet','Regija','Short_title'])['Količina'].sum().reset_index()
-artikala = by_region_product['Short_titile'].uniqeu()
+artikala = by_region_product['Short_title'].uniqeu()
 
 def zadnji_graph(x):
         by_region_product = by_region_product.query("Short_title == '"+str(x)+"'")
