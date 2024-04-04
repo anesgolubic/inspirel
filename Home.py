@@ -69,6 +69,9 @@ with st.sidebar:
     kantoni = df.Regija.unique()
     kanton = st.multiselect("Izaberi Kanton/Regiju", options=kantoni, default=kantoni)
 
+    poslovni_partneri = df['Poslovni partner'].unique()
+    poslovni_partner = st.selectbox(label='Izaberi poslovnog partnera',options=poslovni_partneri)
+
 #with col3:
     #poredjenje = st.selectbox("Izaberi poređenje: ",("Prethodni period (MoM)","Prethodna godina (YoY)"),index=1)
 
