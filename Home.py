@@ -110,7 +110,7 @@ if len(artikli) > 0:
         dddd.append(c)
     df1 = df1[df1['Short_title'].isin(dddd)]
 
-#st.write(df1)
+st.write(df1)
 
 def total_artikal(artikal):
     art = df1.query('Short_title == "'+str(artikal)+'"')
