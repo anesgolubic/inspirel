@@ -265,7 +265,6 @@ by_region_product = pd.melt(by_region_product2,
     value_name='Količina',
     col_level=None,
     ignore_index=True)
-st.write(by_region_product)
 fig = px.bar(by_region_product, x='Regija', y='Količina', color='Short_title', text_auto=True, color_discrete_map=color_map_artikli)
 fig.update_layout(dragmode=False)
 fig.update_layout(yaxis_title=None)
