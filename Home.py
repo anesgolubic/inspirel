@@ -121,6 +121,7 @@ st.write(df1)
 def total_artikal(artikal):
     art = df1.query('Short_title == "'+str(artikal)+'"')
     art = art['Količina'].sum()
+    art = int(float(art))
     return art
 
 col1, col2, col3, col4, col5 = st.columns(5)
