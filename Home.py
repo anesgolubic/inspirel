@@ -51,8 +51,6 @@ col1, col2 = st.columns([2,1])
 prvi_datum = datetime(2022, 1, 1).date()
 
 yesterday_date = date.today() - timedelta(1)
-st.write(prvi_datum)
-st.write(yesterday_date)
 
 with st.sidebar:
     selected_date = st.slider(
@@ -63,6 +61,9 @@ with st.sidebar:
         step=timedelta(days=1),
     )
     
+    lijekovi = df['Short_title'].unique()
+    artikli = st.multiselect("Izaberi lijekove",options=lijekovi, default=lijekovi)
+
     entitet = st.multiselect("Izaberi Entitet", options=('FBiH','RS','BD'), default=('FBiH','RS','BD'))
     
     kantoni = df.Regija.unique()
@@ -76,7 +77,6 @@ with st.sidebar:
 
 d = selected_date[0]
 d2 = selected_date[1]
-st.write(selected_date)
 dana = (d2 - d)
 
 # if poredjenje == "Prethodna godina (YoY)":
