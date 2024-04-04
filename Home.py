@@ -338,4 +338,5 @@ kolone = []
 for col, value in assign_columns(values):
     kolone.append([col,value])
 
-st.write(kolone)
+koldf = pd.DataFrame(kolone, columns=['Kolona','Ime'])
+st.write(koldf)
