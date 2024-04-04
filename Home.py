@@ -290,15 +290,7 @@ artikala = by_region_product['Short_title'].unique()
 
 def zadnji_graph(by_region_product, x):
         by_region_product = by_region_product.query("Short_title == '"+str(x)+"'")
-        by_region_product = by_region_product.sort_values(by=['Regija'])
-        by_region_product2 = by_region_product.pivot(index=['Entitet','Regija'],columns='Short_title',values='Količina').fillna(0).reset_index()
-        by_region_product = pd.melt(by_region_product2,
-            id_vars=['Entitet','Regija'],
-            value_vars=None,
-            var_name=None,
-            value_name='Količina',
-            col_level=None,
-            ignore_index=True)
+        by_region_product = by_region_product.sort_values(by=['Regija']).reset_index()
         fig = px.bar(by_region_product, x='Regija', y='Količina', color='Short_title', text_auto=True, color_discrete_map=color_map_artikli,title=str(x))
         fig.update_layout(dragmode=False)
         fig.update_layout(yaxis_title=None)
