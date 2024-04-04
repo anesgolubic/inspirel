@@ -80,7 +80,7 @@ color_map_artikli={
     "Glaumax": "green",
     "Latanox": "blue",
     "Bimanox": "goldenrod",
-    "Moksacin": "magenta"},
+    "Moksacin": "magenta"}
     
 
 d = selected_date[0]
