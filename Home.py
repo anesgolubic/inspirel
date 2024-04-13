@@ -312,7 +312,7 @@ def zadnji_graph(by_region_product, x):
         st.plotly_chart(fig, use_container_width=True, config=dict(
             displayModeBar=False))
 
-        tabela = by_region_product[by_region_product['Regija','Short_title','Količina']]
+        tabela = by_region_product[['Regija','Short_title','Količina']]
         st.write(tabela)
 if len(artikala) == 1:
     zadnji_graph(by_region_product,artikala[0])
