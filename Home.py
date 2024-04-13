@@ -178,7 +178,7 @@ with col1:
     by_region_product = by_month.sort_values(by=['Year','Month'])
     by_region_product2 = by_month.pivot(index=['Month'],columns='Year',values='Količina').fillna(0).reset_index()
     by_region_product = pd.melt(by_region_product2,
-    id_vars=['Year'],
+    id_vars=['Month'],
     value_vars=None,
     var_name=None,
     value_name='Količina',
