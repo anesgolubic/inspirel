@@ -161,20 +161,6 @@ with col1:
     #Ostvarena prodaja po mjesecu
     by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
     #fig = px.bar(by_month, x=['Year','Month'], y='Količina', color='Year', text_auto=True)
-    fig = px.bar(by_month, x='Month',y='Količina', text_auto=True, facet_col='Year')
-    fig.update_layout(dragmode=False)
-    fig.update_layout(yaxis_title=None)
-    fig.update_layout(xaxis_title=None)
-    fig.update_xaxes(type='category')
-    fig.update_xaxes(nticks=12) 
-    #fig.update_traces(textposition='inside')
-    st.plotly_chart(fig, use_container_width=True, config=dict(
-        displayModeBar=False))
-
-
-    #Ostvarena prodaja po mjesecu
-    by_month = df1.groupby(['Year','Month'])['Količina'].sum().reset_index()
-    #fig = px.bar(by_month, x=['Year','Month'], y='Količina', color='Year', text_auto=True)
     by_region_product = by_month.sort_values(by=['Year','Month'])
     by_region_product2 = by_month.pivot(index=['Month'],columns='Year',values='Količina').fillna(0).reset_index()
     by_region_product = pd.melt(by_region_product2,
