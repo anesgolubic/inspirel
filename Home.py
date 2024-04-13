@@ -300,7 +300,7 @@ artikala = by_region_product['Short_title'].unique()
 
 def zadnji_graph(by_region_product, x):
         by_region_product = by_region_product.query("Short_title == '"+str(x)+"'")
-        by_region_product = by_region_product.sort_values(by=['Regija']).reset_index()
+        by_region_product = by_region_product.sort_values(by=['Količina'], ascending=False).reset_index()
         fig = px.bar(by_region_product, x='Regija', y='Količina', color='Short_title', text_auto=True, color_discrete_map=color_map_artikli,title=str(x))
         fig.update_layout(dragmode=False)
         fig.update_layout(yaxis_title=None)
