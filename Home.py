@@ -312,6 +312,7 @@ def zadnji_graph(by_region_product, x):
         st.plotly_chart(fig, use_container_width=True, config=dict(
             displayModeBar=False))
 
+        st.write(by_region_product)
 if len(artikala) == 1:
     zadnji_graph(by_region_product,artikala[0])
         
