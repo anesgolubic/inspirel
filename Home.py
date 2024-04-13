@@ -203,7 +203,7 @@ with col1:
     """
     #Ostvarena prodaja po regionu
     by_region = df1.groupby(['Entitet','Regija'])['Količina'].sum().reset_index()
-    by_region = by_region.sort_values(by=['Količina'])
+    by_region = by_region.sort_values(by=['Količina'], ascending='False')
     fig = px.bar(by_region, x='Regija', y='Količina', color='Entitet', text_auto=True, color_discrete_map=color_map_entiteti)
     fig.update_layout(dragmode=False)
     fig.update_layout(yaxis_title=None)
