@@ -75,7 +75,7 @@ def update_podataka():
         df1 = pd.concat([df, df1], axis=0)
         df1.dropna(how='all', axis=1, inplace=True) 
 
-    df1.to_csv('Inspirel_consolidated2.csv')
+    df1.to_csv('Inspirel_consolidated.csv')
     st.write('Update gotov.')
 
 
@@ -117,6 +117,9 @@ prvi_datum = datetime(2022, 1, 1).date()
 yesterday_date = date.today() - timedelta(1)
 
 with st.sidebar:
+    if st.button('Osvježi podatke'):
+        update_podataka()
+
     selected_date = st.slider(
         "Izaberi period",
         min_value=prvi_datum,
@@ -429,5 +432,3 @@ else:
             zadnji_graph(by_region_product,row['Ime'])
 
 
-if st.button('Osvježi podatke'):
-    update_podataka()
