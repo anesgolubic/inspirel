@@ -15,6 +15,70 @@ from dateutil.relativedelta import relativedelta
 import openpyxl
 import plotly.graph_objects as go
 
+import gdown
+
+def update_podataka():
+    st.write('Update podataka pokrenut.')
+    url = "https://drive.google.com/drive/folders/1DjdfdT4yF9NAWaZgw4n7oVHGe_hCKnEk"
+    file = gdown.download_folder(url, quiet=True, use_cookies=False)
+    st.write('File preuzet')
+    fajl = file[0]
+
+    #Global variables
+    ignore_sheets = ['Bonus 2023','Izgubljena prodaja Dorzol','Cumulative Dorzol','Bonus 2022','Weekly sales','Cumulative']
+
+
+    def get_sheets(file, ignore_sheets):
+        sheets = []
+
+        # Load the Excel workbook
+        workbook = openpyxl.load_workbook(file)
+
+        # Get all sheet names
+        sheet_names = workbook.sheetnames
+
+        # Print all sheet names
+        for sheet_name in sheet_names:
+            if sheet_name in ignore_sheets:
+                pass
+            else:
+                sheets.append(sheet_name)
+
+        return sheets
+
+    def get_data(file, sheet):
+        df = pd.read_excel(fajl, sheet_name=sheet)
+
+        #Drop empty rows
+        df.dropna(subset=['Artikal'], inplace=True)
+
+        # Extract values in the 'Artikal' column where other columns are NaN
+        new_column_values = df['Artikal'].where(df.drop(columns='Artikal').isnull().all(axis=1))
+
+        # Forward fill the extracted values
+        new_column_values.ffill(inplace=True)
+
+        # Add the new column to the DataFrame
+        df['Regija'] = new_column_values
+
+        #Drop empty rows
+        df.dropna(subset=['Datum'], inplace=True)
+
+        return df
+
+    sheets = get_sheets(fajl, ignore_sheets)
+
+    df1 = get_data('Promet JGL OFT sedmicni 2024.xlsx', sheets[0])
+
+    for sheet in sheets[1:]:
+        df = get_data('Promet JGL OFT sedmicni 2024.xlsx', sheet)
+        df1 = pd.concat([df, df1], axis=0)
+        df1.dropna(how='all', axis=1, inplace=True) 
+
+    df1.to_csv('Inspirel_consolidated2.csv')
+    st.write('Update gotov.')
+
+
 """
 # Inspirehl
 """
@@ -365,3 +429,4 @@ else:
             zadnji_graph(by_region_product,row['Ime'])
 
 
+st.button("Osvježi podatke", on_click=update_podataka())
