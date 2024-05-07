@@ -429,4 +429,5 @@ else:
             zadnji_graph(by_region_product,row['Ime'])
 
 
-st.button("Osvježi podatke", on_click=update_podataka())
+if st.button('Osvježi podatke'):
+    update_podataka()
