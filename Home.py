@@ -128,7 +128,28 @@ with st.sidebar:
         #step=timedelta(days=1),
     #)
 
-    
+    #Datum opcije
+    #Ovaj mjesec
+    #Prošli mjesec
+    #Tekuća godina
+    #Od 2022. godine
+
+    datum_periodi = st.selectbox(
+        "Izaberi neki od predefinisanih perioda",
+        ("Od 2022. godine", "Tekuća godina", "Prošli mjesec", "Tekući mjesec"))
+
+    if datum_periodi == "Od 2022. godine":
+        dd = datetime(2022, 1, 1).date()
+        dd2 = yesterday_date
+    elif datum_periodi == "Tekuća godina":
+        dd = datetime(2024, 1, 1).date()
+        dd2 = yesterday_date
+    elif datum_periodi == "Prošli mjesec":
+        dd = yesterday_date.replace(day=1) - relativedelta(months=1)
+        dd2 = yesterday_date.replace(day=1) - relativedelta(days=1)
+    elif datum_periodi == "Tekući mjesec":
+        dd = yesterday_date.replace(day=1)
+        dd2 = yesterday_date
     
     lijekovi = df['Short_title'].unique()
     artikli = st.multiselect("Izaberi lijekove",options=lijekovi, default=lijekovi)
@@ -156,28 +177,7 @@ color_map_entiteti={
     "RS": "#EF553B",
     "BD": "#00CC96"}
     
-#Datum opcije
-#Ovaj mjesec
-#Prošli mjesec
-#Tekuća godina
-#Od 2022. godine
 
-datum_periodi = st.selectbox(
-    "Izaberi neki od predefinisanih perioda",
-    ("Od 2022. godine", "Tekuća godina", "Prošli mjesec", "Tekući mjesec"))
-
-if datum_periodi == "Od 2022. godine":
-    dd = datetime(2022, 1, 1).date()
-    dd2 = yesterday_date
-elif datum_periodi == "Tekuća godina":
-    dd = datetime(2024, 1, 1).date()
-    dd2 = yesterday_date
-elif datum_periodi == "Prošli mjesec":
-    dd = yesterday_date.replace(day=1) - relativedelta(months=1)
-    dd2 = yesterday_date
-elif datum_periodi == "Tekući mjesec":
-    dd = yesterday_date.replace(day=1)
-    dd2 = yesterday_date
 
 
 #d = selected_date[0]
