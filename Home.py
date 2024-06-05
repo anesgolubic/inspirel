@@ -150,6 +150,9 @@ with st.sidebar:
     elif datum_periodi == "Tekući mjesec":
         dd = yesterday_date.replace(day=1)
         dd2 = yesterday_date
+
+    d = st.date_input("Unesi ili izaberi početni datum", dd)
+    d2 = st.date_input("Unesi ili izaberi krajnji datum", dd2)
     
     lijekovi = df['Short_title'].unique()
     artikli = st.multiselect("Izaberi lijekove",options=lijekovi, default=lijekovi)
@@ -182,8 +185,7 @@ color_map_entiteti={
 
 #d = selected_date[0]
 #d2 = selected_date[1]
-d = st.date_input("Unesi ili izaberi početni datum", dd)
-d2 = st.date_input("Unesi ili izaberi krajnji datum", dd2)
+
 dana = (d2 - d)
 
 
