@@ -120,13 +120,15 @@ with st.sidebar:
     if st.button('Osvježi podatke'):
         update_podataka()
 
-    selected_date = st.slider(
-        "Izaberi period",
-        min_value=prvi_datum,
-        max_value=yesterday_date,
-        value=(prvi_datum, yesterday_date),
-        step=timedelta(days=1),
-    )
+    #selected_date = st.slider(
+        #"Izaberi period",
+        #min_value=prvi_datum,
+        #max_value=yesterday_date,
+        #value=(prvi_datum, yesterday_date),
+        #step=timedelta(days=1),
+    #)
+
+    
     
     lijekovi = df['Short_title'].unique()
     artikli = st.multiselect("Izaberi lijekove",options=lijekovi, default=lijekovi)
@@ -154,10 +156,36 @@ color_map_entiteti={
     "RS": "#EF553B",
     "BD": "#00CC96"}
     
+#Datum opcije
+#Ovaj mjesec
+#Prošli mjesec
+#Tekuća godina
+#Od 2022. godine
 
-d = selected_date[0]
-d2 = selected_date[1]
+datum_periodi = st.selectbox(
+    "Izaberi neki od predefinisanih perioda",
+    ("Od 2022. godine", "Tekuća godina", "Prošli mjesec", "Tekući mjesec"))
+
+if datum_periodi == "Od 2022. godine":
+    dd = datetime(2022, 1, 1).date()
+    dd2 = yesterday_date
+elif datum_periodi == "Tekuća godina":
+    dd = datetime(2024, 1, 1).date()
+    dd2 = yesterday_date
+elif datum_periodi == "Prošli mjesec":
+    dd = yesterday_date.replace(day=1) - relativedelta(months=1)
+    dd2 = yesterday_date
+elif datum_periodi == "Tekući mjesec":
+    dd = yesterday_date.replace(day=1)
+    dd2 = yesterday_date
+
+
+#d = selected_date[0]
+#d2 = selected_date[1]
+d = st.date_input("Unesi ili izaberi početni datum", dd)
+d2 = st.date_input("Unesi ili izaberi krajnji datum", dd2)
 dana = (d2 - d)
+
 
 # if poredjenje == "Prethodna godina (YoY)":
 #     momd = d - relativedelta(years=1)
