@@ -17,6 +17,10 @@ import plotly.graph_objects as go
 
 import gdown
 
+with st.sidebar:
+    if st.button('Osvježi podatke'):
+        update_podataka()
+
 def update_podataka():
     st.write('Update podataka pokrenut.')
     url = "https://drive.google.com/drive/folders/1DjdfdT4yF9NAWaZgw4n7oVHGe_hCKnEk"
@@ -117,8 +121,8 @@ prvi_datum = datetime(2022, 1, 1).date()
 yesterday_date = date.today() - timedelta(1)
 
 with st.sidebar:
-    if st.button('Osvježi podatke'):
-        update_podataka()
+    #if st.button('Osvježi podatke'):
+        #update_podataka()
 
     #selected_date = st.slider(
         #"Izaberi period",
