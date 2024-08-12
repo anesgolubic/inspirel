@@ -17,9 +17,7 @@ import plotly.graph_objects as go
 
 import gdown
 
-with st.sidebar:
-    if st.button('Osvježi podatke'):
-        update_podataka()
+
 
 def update_podataka():
     st.write('Update podataka pokrenut.')
@@ -81,6 +79,10 @@ def update_podataka():
 
     df1.to_csv('Inspirel_consolidated.csv')
     st.write('Update gotov.')
+
+with st.sidebar:
+    if st.button('Osvježi podatke'):
+        update_podataka()
 
 
 """
