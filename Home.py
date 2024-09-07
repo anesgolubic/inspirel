@@ -258,10 +258,10 @@ with col5:
 
 
 
-check_graph = df1.groupby('Datum')['Količina'].sum().reset_index()
-fig = px.line(check_graph, x='Datum', y='Količina')
-st.plotly_chart(fig, use_container_width=True, config=dict(
-    displayModeBar=False))
+#check_graph = df1.groupby('Datum')['Količina'].sum().reset_index()
+#fig = px.line(check_graph, x='Datum', y='Količina')
+#st.plotly_chart(fig, use_container_width=True, config=dict(
+    #displayModeBar=False))
 
 col1, col2 = st.columns([3,1])
 with col1:
